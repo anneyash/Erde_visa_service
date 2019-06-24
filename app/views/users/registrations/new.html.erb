@@ -1,0 +1,75 @@
+
+
+
+<div class="row">
+  <div class="registration_image">
+      <%= image_tag("photo-1537158170641-9561ee4f0c7a.jpeg", :alt => "rss feed") %>
+  </div>
+  <div class="registration_bold_text">
+  <h2>
+    <strong>Оформи визу <br>в любую страну, <br>о которой мечтал</strong>
+  </h2>
+  </div>
+  <div class="registration_smalll_text">
+    <small>Слетать на денёк в Париж или провести всё лето <br>на Бали теперь стало ещё проще вместе <br>с визовым помощником Erde</small>
+  </div>
+
+
+
+  <div class="col-md-4">
+    <div class="registration_link_to_sign-2">
+      <a href="http://localhost:3000/users/sign_in">Войти</a>
+    </div>
+
+    <div class="registration_text_to_go">
+        <h2>
+          <strong>Зарегистрируйтесь</strong>
+        </h2>
+    </div>
+    <div class="registration_page">
+      <br>
+      <br>
+
+
+
+          <div class="input-email">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "Введите Ваш email"%>
+              </div>
+
+
+        </div>
+
+        <br>
+
+
+
+          <div class="field">
+
+
+
+            <div class="input-new-password-registration">
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "Введите Ваш пароль"%>
+            </div>
+          </div>
+
+
+
+        <br>
+        <br>
+
+        <div class="button-registration">
+          <%= f.submit "Войти", class: "btn btn btn-primary-yo greatbtn" %>
+        </div>
+        <% end %>
+    </div>
+
+        <br>
+
+
+        </div>
+
+
+  </div>
+</div>

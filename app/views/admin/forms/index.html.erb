@@ -1,0 +1,16 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Все визы</li>
+  </ol>
+</nav>
+
+<h1>Созданные визы</h1>
+<br><br>
+
+<% @forms.each do |form| %>
+  <h3><%= link_to form.title, admin_form_questions_path(form) %></h3>
+<% end %>
+
+
+<br><br>
+<%= link_to 'Создать новую визу', new_admin_form_path, class: 'btn btn-primary'%>

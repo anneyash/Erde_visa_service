@@ -1,0 +1,13 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><%= link_to 'Все визы', admin_forms_path %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to 'Редактирование визы', '/admin/created' %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to @form.title, admin_form_questions_path(@form) %></li>
+    <li class="breadcrumb-item active" aria-current="page">Новый вопрос</li>
+  </ol>
+</nav>
+
+<h1>Добавление вопроса</h1>
+<br><br>
+
+<%= render 'form' %>

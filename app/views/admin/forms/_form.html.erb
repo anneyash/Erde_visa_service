@@ -1,0 +1,21 @@
+<%= form_with model: [:admin, @form], remote: true do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :title, 'Введите название визы', class: 'control-label' %>
+        <%= f.text_field :title, placeholder: 'Введите название визы', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description, 'Введите описание визы', class: 'control-label' %>
+        <%= f.text_field :description, placeholder: 'Введите описание визы', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit @form.new_record? ? "Создать визу" : "Сохранить визу", class: 'btn btn-primary' %>
+        <% unless @form.new_record? %>
+          <%= link_to 'Удалить визу', admin_form_path(@form),
+            data: { :confirm => 'Вы уверенеы?' }, :method => :delete, class: 'btn btn-outline-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

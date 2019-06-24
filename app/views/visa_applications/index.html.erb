@@ -1,0 +1,68 @@
+<div class="col-md-7">
+  <form method="POST" id="visa_application_form">
+    <% @questions.each do |question| -%>
+      <div class="form-group visa-applications-form">
+
+        <% if question.is_group_view %>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><%= question.title %></label>
+        <% else %>
+          <h4>
+            <strong><%= question.title %></strong>
+            <% if question.muted_text and question.muted_text != "" %>
+              <small class="text-muted">(<%= question.muted_text %>)</small>
+            <% end %>
+          </h4>
+        <% end %> 
+
+
+        <% if question.question_type == "string_input" %>
+          <% if question.is_group_view %>
+            <div class="col-sm-10">
+              <input type="textanswer" class="form-control col-md-9" id="FormControlInput<%= question.id %>"
+                     name="question_<%= question.id %>" placeholder="<%= question.placeholder %>" onchange="Validate(this)">
+            </div>
+            </div>
+          <% else %>
+            <input type="textanswer" class="form-control col-md-9" id="FormControlInput<%= question.id %>"
+                   name="question_<%= question.id %>" placeholder="<%= question.placeholder %>" onchange="Validate(this)">
+
+          <% end %>
+        <% elsif question.question_type == "radiobutton_choice" %>
+          <% question.question_options.each do |question_option| -%>
+            <div class="form-check form-check-inline input">
+              <input class="form-check-input radiobutton" type="radio" name="question_<%= question.id %>"
+                     id="inlineRadio<%= question_option.id %>" value="<%= question_option.content %>" onclick="HideOptionalInput('#question_<%= question.id %>')">
+              <label class="form-check-label" for="inlineRadio<%= question_option.id %>">
+                <%= question_option.content %>
+              </label>
+            </div>
+          <% end %>
+          <% if question.has_optional_answer %>
+            <div class="form-check form-check-inline input">
+              <input class="form-check-input radiobutton" type="radio" name="question_<%= question.id %>"
+                     id="question_<%= question.id %>_optional" value="Другое" onchange="ShowOptionalInput('#question_<%= question.id %>')">
+              <label class="form-check-label" for="question_<%= question.id %>_optional">
+                Другое
+              </label>
+            </div>
+            <input type="textanswer" class="form-control col-md-9" id="question_<%= question.id %>"
+                   name="question_<%= question.id %>" onchange="Validate(this)" style="display: none" id="question_<%= question.id %>">
+          <% end %>
+        <% elsif question.question_type == "date" %>
+          <div class="dates klop">
+            <div class="start_date input-group mb-4">
+              <input class="form-control start_date col-md-9" name="question_<%= question.id %>"
+                     placeholder="дд.мм.гг"
+                     id="startdate_datepicker" data-provide='datepicker' onchange="Validate(this)">
+            </div>
+        <% end %>
+        </div>
+
+    <% end %>
+    <div class="visa-applications-button">
+      <button type="submit" form="visa_application_form" value="Submit" class="btn btn-primary">Далее</button>
+    </div>
+
+  </form>
+</div>

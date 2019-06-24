@@ -1,0 +1,29 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><%= link_to 'Все визы', admin_forms_path %></li>
+    <li class="breadcrumb-item" aria-current="page"><%= link_to 'Редактирование визы', '/admin/created' %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @form.title %></li>
+  </ol>
+</nav>
+
+<h1><%= @form.title %></h1>
+<br><br>
+
+<% if @questions.present? %>
+  <% @questions.each do |question| %>
+    <%= render 'question', question: question %>
+  <% end %>
+  <hr>
+<% else %>
+  <p><i>Еще нет вопросов</i></p>
+  <br>
+<% end %>
+
+<br>
+<%= link_to 'Добавить вопрос', new_admin_form_question_path(@form), class: 'btn btn-primary'%>
+
+<% unless @form.declaration.present? %>
+  <%= link_to 'Добавить декларацию', new_admin_form_declaration_path(@form), class: 'btn btn-outline-primary'%>
+<% else %>
+  <%= link_to 'Редактировать декларацию', edit_admin_form_declaration_path(@form), class: 'btn btn-outline-primary'%>
+<% end %>

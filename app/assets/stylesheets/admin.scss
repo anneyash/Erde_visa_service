@@ -1,0 +1,35 @@
+@import "bootstrap";
+@import "custom";
+
+.breadcrumb {
+  padding: 0;
+  background: rgba(255, 255, 255, 1);
+  border: 0px solid rgba(255, 255, 255, 1);
+  border-radius: 0px;
+}
+
+.breadcrumb li {font-size: 14px;}
+// .breadcrumb a {color: rgba(66, 139, 202, 1);}
+// .breadcrumb a:hover {color: rgba(42, 100, 150, 1);}
+// .breadcrumb>.active {color: rgba(153, 153, 153, 1);}
+.breadcrumb-item + .breadcrumb-item::before {content: "\2022";}
+
+.admin-body {
+  padding: 30px 0 0 0;
+}
+
+.field_with_errors input {
+  border: 1px solid red !important;
+}
+
+input[type="radio"] {
+  display: inline-block !important;
+}
+
+.control-label {
+  font-weight: 500;
+}
+
+.nested_fields.nested_question_answers {
+  display: inline;
+}

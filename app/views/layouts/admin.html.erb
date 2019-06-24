@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-light bg-light">
+    <div style="color: #0015FF; margin-right: 40px; margin-left: 25px; height: 50px;">
+      <%= image_tag("logonew.svg", :alt => "rss feed") %>
+    </div>
+  </nav>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <% if admin_signed_in? %>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin/forms">Все визы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/forms/new">Создать визу</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/created">Редактировать</a>
+        </li>
+      <% end %>
+    </ul>
+
+    <div style="color: #0015FF;">
+      <div style="margin-right: 30px;">
+        <% if admin_signed_in? %>
+        <%= link_to "Выйти", destroy_admin_session_path, method: :delete, class: "button" %>
+        <% else %>
+        <%= link_to "Войти", new_admin_session_path, class: "button" %><br />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container admin-body">
+  <% #= render 'shared/flashes' %>
+  <%= yield %>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Erde</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-light bg-light">
+    <div style="color: #0015FF; margin-right: 40px; margin-left: 25px;">
+      <h4>
+          <strong><a class="nav-link" style="color: #0015FF;" href="http://localhost:3000/landing">Erde</a></strong>
+      </h4>
+    </div>
+  </nav>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="http://localhost:3000/choose_country">Получить визу<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/account">Личный кабинет</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.instagram.com/yash_design/">Контакты</a>
+      </li>
+    </ul>
+
+    <div style="color: #0015FF;">
+      <div style="margin-right: 30px;">
+        <% if user_signed_in? %>
+        <%= link_to "Выйти", destroy_user_session_path, method: :delete, class: "button" %>
+        <% else %>
+        <%= link_to "Войти", new_user_session_path, class: "button" %><br />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <% if @step %>
+    <div class="row">
+      <div class="col-md-12 form-progress-bar">
+        <div class="progress" style="height: 1px;">
+          <div class="progress-bar" role="progressbar" style="width: <%= @step.progress_percentage %>%;" aria-valuenow="<%= @step.progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="progress" style="height: 9px;">
+          <div class="progress-bar" role="progressbar" style="width: <%= @step.progress_percentage %>%;" aria-valuenow="<%= @step.progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+  <% end %>
+
+  <%= yield %>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<hr align="center" width="100%" size="3" color="#E2E2E2" />
+
+<!-- Footer -->
+<footer class="page-footer font-small">
+
+
+
+
+
+
+      
+
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5">
+
+      <!-- Grid row -->
+      <div class="row mt-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+          <!-- Content -->
+          <h5 class="text-uppercase font-weight-bold">Erde</h5>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>Мы супер крутые, поставьте десять. Мы не спали ночами <br> и не кушали круассаны. <br> Хотим к своим матушкам, помогите</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Возможности</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <a href="http://localhost:3000/visa_applications/1?step=1">Заполнить анкету</a>
+          </p>
+          <p>
+            <a href="https://vk.com/anfxl">Написать нам</a>
+          </p>
+          <p>
+            <a href="http://portfolio.hse.ru/Project/50120">Поставить 10</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Ссылки</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <a href="http://localhost:3000/account">Ваш аккаунт</a>
+          </p>
+          <p>
+            <a href="https://gph.is/2FvkdYG">Стать частью</a>
+          </p>
+          <p>
+            <a href="https://vk.com/anneyash">Позвонить</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+          <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Контакты</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>Москва, Пионерская, 12</p>
+          <p>erde.com</p>
+          <p>+79035407829</p>
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="http://localhost:3000/landing"> Erde.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+
+  <br>
+  <!-- Footer -->
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div style="padding-bottom: 20px">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 style="display: inline"><%= question.title %></h3>
+      <span class="text-muted "><%= question.placeholder.blank? ? '' : "(#{question.placeholder})" %></span>
+      <%= link_to '[редактировать]', edit_admin_form_question_path(question.form, question), style: "font-size: 12px; " %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <% case question.question_type %>
+      <% when Question::STRING_INPUT %>
+        <input class="form-control" type="text" value="">
+      <% when Question::DATE %>
+        <input class="form-control" type="date" value="">
+      <% when Question::RADIOBUTTON_CHOICE %>
+        <div style="margin: 10px 0 30px;">
+          <% question.answers.each do |answer| %>
+            <label style="margin-right: 20px;"><input type="radio">&nbsp;&nbsp;<%= answer.answer %></label>
+          <% end %>
+        </div>
+      <% when Question::RADIOBUTTON_CHOICE_WITH_INPUT %>
+        <div style="margin: 10px 0 30px;">
+          <% question.answers.each do |answer| %>
+            <label style="margin-right: 20px;"><input type="radio">&nbsp;&nbsp;<%= answer.answer %></label>
+          <% end %>
+          <br>
+          <input class="form-control" type="text" value="">
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

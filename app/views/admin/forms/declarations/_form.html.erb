@@ -1,0 +1,35 @@
+<%= form_with model: [:admin, @declaration.form, @declaration], url: admin_form_declaration_path(@declaration.form, @declaration), remote: true do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :title, 'Введите название визы', class: 'control-label' %>
+        <%= f.text_field :title, placeholder: 'Введите название визы', class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :body, 'Введите декларацию', class: 'control-label' %>
+        <%= f.text_area :body, placeholder: 'Введите декларацию', class: 'form-control', size: '100x10' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :step, 'Номер страницы', class: 'control-label' %>
+        <%= f.select :step, (1..10).to_a, {}, {class: 'form-control', style: 'width: 60px; display: inline-block; margin-left: 10px;'} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.submit @form.new_record? ? "Создать декларацию" : "Сохранить декларацию", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

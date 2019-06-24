@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="registration_image">
+      <%= image_tag("photo-1485669423465-9b89238f653a.jpeg", :alt => "rss feed") %>
+  </div>
+  <div class="registration_bold_text">
+  <h2>
+    <strong>Виза в любую <br>страну за пару <br>мгновений</strong>
+  </h2>
+  </div>
+  <div class="registration_smalll_text">
+    <small>Сделать визу в любую страну очень просто<br>с визовым помощником Erde. Заполни анкету <br>и результаты придут уже через пять дней</small>
+  </div>
+
+
+
+  <div class="col-md-4">
+    <div class="registration_link_to_sign">
+      <a href="http://localhost:3000/users/sign_up">Зарегистрироваться</a>
+    </div>
+
+    <div class="registration_text_to_go">
+        <h2>
+          <strong>Войти с помощью</strong>
+        </h2>
+    </div>
+    <div class="registration_page">
+      <br>
+      <br>
+
+
+
+          <div class="input-email">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "Введите Ваш email"%>
+              </div>
+
+
+        </div>
+
+        <br>
+
+
+          <div class="field">
+
+
+            <div class="minimum_password_length">
+            <% if @minimum_password_length %>
+
+            <em>(<%= @minimum_password_length %> символов минимум) </em>
+            <% end %><br/>
+            <br>
+
+
+            <div class="input-new-password">
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "Введите Ваш пароль"%>
+            </div>
+          </div>
+
+
+
+        <br>
+        <br>
+
+        <div class="button-registration">
+          <%= f.submit "Войти", class: "btn btn btn-primary-yo greatbtn" %>
+        </div>
+        <% end %>
+    </div>
+
+        <br>
+
+
+        </div>
+
+
+  </div>
+</div>
