@@ -69,9 +69,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'devise'
 gem 'nested_form_fields'
 
-group :production do
-  gem "pg"
-end
+
 
 group :development, :test do
   gem "sqlite3"
